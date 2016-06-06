@@ -37,7 +37,7 @@ public class ImmageSearch {
     }
 
     public static double[] getFCTHFeatureVector(String fullFilePath) throws FileNotFoundException, IOException {
-//doc
+
         DocumentBuilder builder = DocumentBuilderFactory.getFCTHDocumentBuilder();
         FileInputStream istream = new FileInputStream(fullFilePath);
         Document doc = builder.createDocument(istream, fullFilePath);
