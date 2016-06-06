@@ -9,18 +9,16 @@ Class.forName("oracle.jdbc.driver.OracleDriver");
 Connection con=DriverManager.getConnection(  
 		"jdbc:oracle:thin:@localhost:1521:orcl","sys as SYSDBA","zorro135");   
       
-PreparedStatement ps=con.prepareStatement("select * from IMG1");  
+PreparedStatement ps=con.prepareStatement("select * from IMAGE");  
 ResultSet rs=ps.executeQuery();  
 if(rs.next()){//now on 1st row  
-              
-Blob b=rs.getBlob(2);//2 means 2nd column data  
-byte barr[]=b.getBytes(1,(int)b.length());//1 means first image  
-              
-FileOutputStream fout=new FileOutputStream("e:\\sonoo.jpg");  
-fout.write(barr);  
-              
-fout.close();  
-System.out.println();
+  rs.next();
+//FileOutputStream fout=new FileOutputStream("e:\\sonoo.jpg");  
+//fout.write(barr);  
+//              
+//fout.close();  
+
+System.out.println(rs.getString(2));
 }//end of if  
 System.out.println("ok");  
 //StorePicture.test(con);

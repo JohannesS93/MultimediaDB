@@ -1,4 +1,7 @@
-import java.io.*; 
+import java.io.*;
+import java.net.URL;
+
+import oracle.sql.*;
 import java.sql.*; 
 import java.util.*; 
 public class StorePicture 
@@ -16,13 +19,10 @@ public class StorePicture
             fis=new FileInputStream(file); 
 
              
-
-            String str="insert into Img1 values(?,?)"; 
+            URL a = file.toURL();
+            String str="insert into Image values(2,BFILENAME ('e:/foto.jpeg','foto'))"; 
             ps=con.prepareStatement(str); 
-            ps.setInt(1,(int)file.length()); 
-            ps.setBinaryStream(2,fis,(int)file.length()); 
-
-            //System.out.println("success"); 
+           
             ps.execute(); 
 
             ps.close(); 
