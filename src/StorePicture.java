@@ -19,10 +19,10 @@ public class StorePicture
             fis=new FileInputStream(file); 
 
              
-            URL a = file.toURL();
-            String str="insert into Image values(2,BFILENAME ('e:/foto.jpeg','foto'))"; 
+            
+            String str="insert into Image values(7,BFILENAME(?, 'name'))"; 
             ps=con.prepareStatement(str); 
-           
+            ps.setString(1, "e:/fotssso.jpeg");
             ps.execute(); 
 
             ps.close(); 

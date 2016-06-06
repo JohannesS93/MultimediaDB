@@ -1,5 +1,8 @@
 import javax.*;
 
+import oracle.jdbc.OracleResultSet;
+import oracle.sql.BFILE;
+
 import java.sql.*;  
 import java.io.*;  
 public class Indexing {  
@@ -11,14 +14,13 @@ Connection con=DriverManager.getConnection(
       
 PreparedStatement ps=con.prepareStatement("select * from IMAGE");  
 ResultSet rs=ps.executeQuery();  
-if(rs.next()){//now on 1st row  
-  rs.next();
-//FileOutputStream fout=new FileOutputStream("e:\\sonoo.jpg");  
-//fout.write(barr);  
-//              
-//fout.close();  
+BFILE src_lob = null;
+while(rs.next()){//now on 1st row  
 
-System.out.println(rs.getString(2));
+	 src_lob = ((OracleResultSet)rs).getBFILE (2);
+System.out.println(rs.getInt(1)+"   "+src_lob.getDirAlias());
+
+
 }//end of if  
 System.out.println("ok");  
 //StorePicture.test(con);
